@@ -1,0 +1,39 @@
+
+--DROP TABLE t_guest;
+--DROP TABLE t_log;
+
+CREATE TABLE [t_guest](
+	[guest_id] [nvarchar](20) NOT NULL,
+	[name] [nvarchar](200) NULL,
+	[company] [nvarchar](300) NULL,
+	[email] [nvarchar](200) NULL,
+	[department] [nvarchar](200) NULL,
+	[job_title] [nvarchar](100) NULL,
+	[phone] [nvarchar](50) NULL,
+	[weibo] [nvarchar](100) NULL,
+	[time_reg] [datetime] NULL,
+ CONSTRAINT [PK_t_guest] PRIMARY KEY CLUSTERED ([guest_id] ASC)
+) ON [PRIMARY]
+
+CREATE TABLE [t_log](
+	[log_id] [int] IDENTITY(1,1) NOT NULL,
+	[logtime] [datetime] NOT NULL,
+	[guest_id] [nvarchar](20) NOT NULL,
+	[log_type] [smallint] NOT NULL,
+ CONSTRAINT [PK_t_log] PRIMARY KEY CLUSTERED ([log_id] ASC)
+) ON [PRIMARY]
+
+
+/* 
+// sample data
+TRUNCATE TABLE [t_guest];
+TRUNCATE TABLE [t_log];
+
+INSERT INTO [t_guest] ([guest_id],[name],[company],[email],[department],[job_title],[phone],[weibo],[time_reg])
+     VALUES
+('BJ0001',N'Mr.立',N'功典科技','larry_su@163.com',N'Reserch & Development',N'Tech. Director',N'18610032111',N'larry微博','2013-10-22'),
+('BJ0166',N'June',N'Migocorp','june_song@migocorp.com',N'Account',N'项目经理',N'13589887766',N'junweibo','2013-11-09');
+*/
+GO
+
+
